@@ -1,30 +1,29 @@
 from django.db import models
 
-class Quiz(models.Model):
-    question = models.TextField()
-    answer_option = models.ForeignKey(AnswerOption, on_delete=models.CASCADE, null=True)
-    answer_string = models.ForeignKey(AnswerString, on_delete=models.CASCADE, null=True)
+
+class Qualification(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-		ordering = ['question']
+        ordering = ['title']
 
-	def __str__(self):
-		return self.question
+    def __str__(self):
+        return self.title
 
-class AnswerOption(models.Model):
-    option1 = models.CharField(max_length=300)
-    option2 = models.CharField(max_length=300)
-    option3 = models.CharField(max_length=300)
-    option4 = models.CharField(max_length=300)
 
-	def __str__(self):
-		return self.option1 + '|' + self.option2 + '|' + self.option3 + '|' + self.option4
+class Level(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(null=True, blank=True)
 
-class AnswerString(models.Model):
-    answer = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-		ordering = ['answer']
+        ordering = ['title']
 
-	def __str__(self):
-		return self.answer
+    def __str__(self):
+        return self.title

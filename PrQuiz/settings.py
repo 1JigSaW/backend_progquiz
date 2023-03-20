@@ -11,6 +11,14 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+import django
+from django.conf import settings
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PrQuiz.settings')
+django.setup()
+
+# Now you can access Django settings and modules
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -78,7 +86,7 @@ WSGI_APPLICATION = 'PrQuiz.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'suppapp',
+        'NAME': 'progquiz',
         'USER': 'jigsaw',
         'PASSWORD': 'Razer197',
         'HOST': '127.0.0.1',
